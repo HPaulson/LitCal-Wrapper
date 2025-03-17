@@ -30,7 +30,7 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "litcal"
-          entrypoint: "main.ts"
+          entrypoint: "index.ts"
           root: "."
           
           
