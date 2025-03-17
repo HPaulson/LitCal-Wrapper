@@ -33,9 +33,13 @@ export class APIWrapper {
       let url = new URL(`${this.baseURL}${endpoint}`);
 
       if (queryParams) {
-        Object.entries(queryParams).forEach(([k, v]) =>
-          url.searchParams.append(k, v)
-        );
+        Object.entries(queryParams).forEach(([k, v]) => {
+          if (url.searchParams.has(k)) {
+            url.searchParams.append(k, v);
+          } else {
+            url.searchParams.set(k, v);
+          }
+        });
       }
 
       const options: RequestInit = {
@@ -57,12 +61,12 @@ export class APIWrapper {
         this.data = await response
           .json()
           .then((json) => (key ? json[key] : json));
-        this.filters = filters;
+        this.filters = this.normalizeFilters(filters);
         this.fields = fields;
       } else {
         throw new Error(`Unsupported content type: ${contentType}`);
       }
-
+      console.log(this.filters);
       this.applyFilters();
       this.applyFieldSelection();
 
@@ -70,6 +74,27 @@ export class APIWrapper {
     } catch (error) {
       throw new Error(`Error fetching data: ${error}`);
     }
+  }
+
+  private normalizeFilters(filters: Record<string, any>): Record<string, any> {
+    const normalized: Record<string, any> = {};
+    for (const field in filters) {
+      for (const operator in filters[field]) {
+        if (operator === "_eq") {
+          if (!normalized[field]) normalized[field] = {};
+          if (!normalized[field][operator]) {
+            normalized[field][operator] = [];
+          }
+          normalized[field][operator] = normalized[field][operator].concat(
+            filters[field][operator]
+          );
+        } else {
+          if (!normalized[field]) normalized[field] = {};
+          normalized[field][operator] = filters[field][operator];
+        }
+      }
+    }
+    return normalized;
   }
 
   private applyFilters() {
@@ -98,15 +123,27 @@ export class APIWrapper {
 
   private matchFilter(value: any, filter: Record<string, any>): boolean {
     for (const operator in filter) {
-      const filterValue = filter[operator]?.toString();
+      let filterValue = filter[operator];
       value = value?.toString();
+
+      if (Array.isArray(filterValue)) {
+        filterValue = filterValue.map(String);
+      }
 
       switch (operator) {
         case "_eq":
-          if (value !== filterValue) return false;
+          if (Array.isArray(filterValue)) {
+            if (!filterValue.includes(value)) return false;
+          } else {
+            if (value !== filterValue.toString()) return false;
+          }
           break;
         case "_neq":
-          if (value === filterValue) return false;
+          if (Array.isArray(filterValue)) {
+            if (filterValue.includes(value)) return false;
+          } else {
+            if (value === filterValue.toString()) return false;
+          }
           break;
         case "_lt":
           if (!(value < filterValue)) return false;
@@ -140,6 +177,17 @@ export class APIWrapper {
           if (
             typeof value !== "string" ||
             !value.toLowerCase().includes(filterValue.toLowerCase())
+          )
+            return false;
+          break;
+        case "_not_contains":
+          if (typeof value === "string" && value.includes(filterValue))
+            return false;
+          break;
+        case "_inot_contains":
+          if (
+            typeof value === "string" &&
+            value.toLowerCase().includes(filterValue.toLowerCase())
           )
             return false;
           break;

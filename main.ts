@@ -72,7 +72,9 @@ function parseFilters(searchParams: URLSearchParams): Record<string, any> {
       if (!filters[filterKey]) {
         filters[filterKey] = {};
       }
-      filters[filterKey][nestedKey] = value;
+      if (filters[filterKey][nestedKey]) {
+        filters[filterKey][nestedKey] = [filters[filterKey][nestedKey], value];
+      } else filters[filterKey][nestedKey] = value;
     }
   }
   return filters;
