@@ -45,23 +45,20 @@ export default function Home({ host }: { host: string }) {
 
   return (
     <div class="flex flex-row bg-gray-100 p-4 h-screen overflow-hidden">
-      {/* Left Panel */}
       <div
         ref={leftPanelRef}
-        class="bg-white p-6 rounded-lg shadow-md"
+        class="bg-white p-6 rounded-lg shadow-md overflow-y-auto"
         style={{ width: `${DEFAULT_WIDTH}px` }}
       >
         <ApiForm host={host} callback={setGeneratedURL} />
       </div>
 
-      {/* Slider */}
       <div
         class="cursor-col-resize bg-gray-300"
         style={{ width: "4px", cursor: "col-resize" }}
         onMouseDown={handleMouseDown}
       ></div>
 
-      {/* Right Panel */}
       <div
         ref={rightPanelRef}
         class="bg-white p-6 rounded-lg shadow-md flex-1 overflow-y-auto"

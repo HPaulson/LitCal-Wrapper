@@ -140,7 +140,7 @@ export default function ApiForm({
           type="submit"
           class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
         >
-          Generate API Link
+          Submit
         </button>
       </form>
     </div>
