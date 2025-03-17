@@ -8,7 +8,7 @@ This project has a small [playground](https://litcal.deno.dev) for easily creati
 
 ## Documentation
 
-`GET https://hunterpauls-litcal-wrap-23.deno.dev/api/fetch`
+`GET https://litcal.deno.dev/api/fetch`
 
 Query Params:
 
