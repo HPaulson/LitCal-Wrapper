@@ -32,11 +32,11 @@ Feasts of the Lord and Solemnities json
 
 > https://hunterpauls-litcal-wrap-23.deno.dev/api/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=FEAST%20OF%20THE%20LORD
 
-## Run Locally
+## Develop Locally
 
 Requires Deno.
 
-`deno run --allow-net main.ts`
+`deno task start`
 
 ## Deploy
 
