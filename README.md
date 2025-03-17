@@ -4,7 +4,7 @@ Wrapper for [LiturgicalCalendarAPI](https://github.com/Liturgical-Calendar/Litur
 
 This project began as a quick and dirty attempt at implementing/demonstrating [this](https://github.com/Liturgical-Calendar/LiturgicalCalendarAPI/issues/43#issuecomment-2712105997) suggestion in deno/Typescript, but it ended up being a fairly complete solution that met my use case.
 
-This project has a small [dashboard](https://hunterpauls-litcal-wrap-23.deno.dev) for easily creating queries. It does not support all features, but some popular ones.
+This project has a small [playground](https://litcal.deno.dev) for easily creating queries. It does not support all features, but some popular ones.
 
 ## Documentation
 
@@ -17,20 +17,6 @@ Query Params:
 - `fields` CSV string of data field keys to include in each object. E.g `name,date,month_short`. Default, all.
 - `returnType` Only supports json or ics. E.g `returnType=ics`. Default, all.
 - Any other query params will be sent to LitCal api. E.g `locale`, `year_type`.
-
-## Examples
-
-Only Solemnities calendar (no vigil)
-
-> https://hunterpauls-litcal-wrap-23.deno.dev/api/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=SOLEMNITY&filter[is_vigil_mass][_neq]=true&returnType=ics
-
-Feasts and Solemnities calendar
-
-> https://hunterpauls-litcal-wrap-23.deno.dev/api/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=SOLEMNITY&filter[grade_lcl][_eq]=FEAST&filter[is_vigil_mass][_neq]=true&returnType=ics
-
-Feasts of the Lord and Solemnities json
-
-> https://hunterpauls-litcal-wrap-23.deno.dev/api/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=FEAST%20OF%20THE%20LORD
 
 ## Develop Locally
 
