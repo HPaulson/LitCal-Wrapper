@@ -3,7 +3,7 @@
 
 Wrapper for [LiturgicalCalendarAPI](https://github.com/Liturgical-Calendar/LiturgicalCalendarAPI) to implement [Directus](https://directus.io)-like filtering.
 
-This project began as an attempt at implementing/demonstrating [this](https://github.com/Liturgical-Calendar/LiturgicalCalendarAPI/issues/43#issuecomment-2712105997) suggestion in deno/Typescript, but it ended up being a fairly complete (third-party) solution that met my use case.
+This project began as a quick and dirty attempt at implementing/demonstrating [this](https://github.com/Liturgical-Calendar/LiturgicalCalendarAPI/issues/43#issuecomment-2712105997) suggestion in deno/Typescript, but it ended up being a fairly complete solution that met my use case.
 
 
 ## Documentation
