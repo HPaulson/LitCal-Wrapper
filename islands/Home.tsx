@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "preact/hooks";
 import ApiForm from "./APIForm.tsx";
-import ApiResponseBox from "./ApiResponseBox.tsx";
+import ApiResponseBox from "./APIResponseBox.tsx";
 
 export default function Home({ host }: { host: string }) {
   const [generatedURL, setGeneratedURL] = useState<string | null>(null);
