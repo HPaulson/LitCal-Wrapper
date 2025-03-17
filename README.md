@@ -4,7 +4,7 @@ Wrapper for [LiturgicalCalendarAPI](https://github.com/Liturgical-Calendar/Litur
 
 This project began as a quick and dirty attempt at implementing/demonstrating [this](https://github.com/Liturgical-Calendar/LiturgicalCalendarAPI/issues/43#issuecomment-2712105997) suggestion in deno/Typescript, but it ended up being a fairly complete solution that met my use case.
 
-This project has a small [playground](https://litcal.deno.dev) for easily creating queries. It does not support all features, but some popular ones.
+The best way to experiment with this wrapper is to test out some queries using the [playground](https://litcal.deno.dev). It does not support all features, since the filter options are practically endless, but it has the most popular options.
 
 ## Documentation
 
