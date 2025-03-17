@@ -13,6 +13,8 @@ export default function ApiForm({
   const [filters, setFilters] = useState<string[]>([]);
   const [excludeVigilMass, setExcludeVigilMass] = useState<string | null>(null);
 
+  // TODO: Modify filtering system so that `filters` does not care about operation type (e.g., _eq, _neq)
+  // or class (e.g., grade, is_vigil_mass, season). This would make it easier to add new filter options to the form
   const BASE_URL = host + "/api/fetch";
   const filterOptions = [
     "Weekday",
