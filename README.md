@@ -1,10 +1,12 @@
+
+## Overview
+
 Wrapper for [LiturgicalCalendarAPI](https://github.com/Liturgical-Calendar/LiturgicalCalendarAPI) to implement [Directus](https://directus.io)-like filtering.
 
 This project began as an attempt at implementing/demonstrating [this](https://github.com/Liturgical-Calendar/LiturgicalCalendarAPI/issues/43#issuecomment-2712105997) suggestion in deno/Typescript, but it ended up being a fairly complete (third-party) solution that met my use case.
 
-The way it works is fairly straightforward:
 
-
+## Documentation
 `GET https://hunterpauls-litcal-wrap-23.deno.dev/fetch`
 
 Query Params:
@@ -14,12 +16,26 @@ Query Params:
 - `returnType` Only supports json or ics. E.g `returnType=ics`. Default, all.
 - Any other query params will be sent to LitCal api. E.g `locale`, `year_type`.
 
-Examples:
-Only Solmenities (no vigil)
+## Examples
+Only Solemnities calendar (no vigil)
 > https://hunterpauls-litcal-wrap-23.deno.dev/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=SOLEMNITY&filter[is_vigil_mass][_neq]=true&returnType=ics
 
-Feasts and Solemnities
-> https://hunterpauls-litcal-wrap-23.deno.dev/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=SOLEMNITY&filter[grade_lcl][_eq]=FEAST&filter[is_vigil_mass][_neq]=true&returnType=json
+Feasts and Solemnities calendar
+> https://hunterpauls-litcal-wrap-23.deno.dev/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=SOLEMNITY&filter[grade_lcl][_eq]=FEAST&filter[is_vigil_mass][_neq]=true&returnType=ics
 
-> Feasts of the Lord and Solemnities
-https://hunterpauls-litcal-wrap-23.deno.dev/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=FEAST OF THE LORD&returnType=json
+Feasts of the Lord and Solemnities json
+> https://hunterpauls-litcal-wrap-23.deno.dev/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=FEAST OF THE LORD
+
+## Run Locally
+Requires Deno. 
+
+`deno run --allow-net main.ts` 
+
+## Deploy
+I recommend using the free tier of [Deno Deploy](https://deno.com/deploy).
+
+
+
+
+
+
