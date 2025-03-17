@@ -52,8 +52,11 @@ export class APIWrapper {
       }
 
       const response = await fetch(url.toString(), options);
-      if (!response.ok)
-        throw new Error(`HTTP error! Status: ${response.status}`);
+      if (!response.ok) {
+        throw new Error(
+          `Wrapper Error. API returned: ${response.status} ${response.statusText}`
+        );
+      }
 
       const contentType = response.headers.get("content-type");
 
@@ -66,7 +69,6 @@ export class APIWrapper {
       } else {
         throw new Error(`Unsupported content type: ${contentType}`);
       }
-      console.log(this.filters);
       this.applyFilters();
       this.applyFieldSelection();
 

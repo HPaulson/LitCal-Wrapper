@@ -35,7 +35,7 @@ export function produceIcal(data: Array<Record<string, any>>): string {
     ical += `UID:${uid}\r\n`;
     ical += `CREATED:${publishDate}\r\n`;
 
-    const desc = `DESCRIPTION:${description.replace(/,/g, "\\,")}`;
+    const desc = `DESCRIPTION:${description}\r\n`;
     ical +=
       desc.length > 75
         ? desc.match(/.{1,75}/g)?.join("\r\n ") + "\r\n"
