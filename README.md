@@ -24,7 +24,7 @@ Feasts and Solemnities calendar
 > https://hunterpauls-litcal-wrap-23.deno.dev/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=SOLEMNITY&filter[grade_lcl][_eq]=FEAST&filter[is_vigil_mass][_neq]=true&returnType=ics
 
 Feasts of the Lord and Solemnities json
-> https://hunterpauls-litcal-wrap-23.deno.dev/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=FEAST OF THE LORD
+> https://hunterpauls-litcal-wrap-23.deno.dev/fetch?endpoint=calendar/diocese/boston_us&locale=en_US&filter[grade_lcl][_eq]=FEAST%20OF%20THE%20LORD
 
 ## Run Locally
 Requires Deno. 
