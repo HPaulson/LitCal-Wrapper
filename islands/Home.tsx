@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "preact/hooks";
-import ApiForm from "./ApiForm.tsx";
+import ApiForm from "./APIForm.tsx";
 import ApiResponseBox from "./ApiResponseBox.tsx";
 
 export default function Home({ host }: { host: string }) {
