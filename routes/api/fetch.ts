@@ -2,7 +2,7 @@ import { Handlers } from "$fresh/server.ts";
 import { APIWrapper } from "../../services/APIWrapper.ts";
 import { produceIcal } from "../../services/produceICal.ts";
 
-const BASE_URL = "https://litcal.johnromanodorazio.com/api/dev/";
+const BASE_URL = "https://litcal.johnromanodorazio.com/api/v4/";
 const KEY = "litcal";
 
 const apiWrapper = new APIWrapper(BASE_URL);
